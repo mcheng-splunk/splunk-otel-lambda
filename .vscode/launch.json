@@ -1,0 +1,149 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:HelloWorldFunction (java8)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API division:HelloWorldFunction (java8)",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            },
+            "lambda": {
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:StockTradingStateMachine",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "StockTradingStateMachine"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:StockCheckerFunction (java8)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "StockCheckerFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:StockSellerFunction (java8)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "StockSellerFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:StockBuyerFunction (java8)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "StockBuyerFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:TransactionTable",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "TransactionTable"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "division:HelloWorldFunction (java8)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "java8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API division:HelloWorldFunction (java8)",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "${workspaceFolder}/src/division/division/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            },
+            "lambda": {
+                "runtime": "java8"
+            }
+        }
+    ]
+}
