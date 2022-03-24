@@ -1,24 +1,29 @@
 # Overview
 
-This repository aims to achieve the following objective
+This repository aims to achieve the following objectives
 
-- Terraform stack environment to repeatedly spin up a AWS Lambda & API Gateway stack
+- Terraform stack environment to repeatedly spin up AWS Lambda funcions & API Gateway stack
 - Splunk Lambda OTel Instrumentation for each the language in the Lambda function 
-- How to traces information is propagated across different Lambda function that is invoked by another Lambda function
+- How to Ote traces is propagated across different Lambda function that is invoked by another Lambda function
 
-# Cacluator Application
+--- 
+
+# Calculator Application
+
+![Calculator architecture](./src/calculator/images/architecture.png)
 
 The application is a calculation that provides simple arithmetic operation mainly
-- add
-- sub
-- div
-- mul
-
+- add   (python)
+- sub   (golang)
+- div   (java)
+- mul   (nodejs)
+ 
 Application will take in 3 parameters in the API URL (e.g. API_URL/?operand1=1&operand2=3&operator=add)
 -  `operand1`   *integer*
 -  `operand2`   *integer*
 -  `operator`   *add* or *sub* or *div* or *mul*
 
+---
 
 # Pre-Requisite
 
@@ -26,17 +31,21 @@ Code has been developed and tested on
 
 `Terraform v1.0.0`   
 `aws-cli/2.3.5 Python/3.8.8 Darwin/21.3.0 exe/x86_64 prompt/off`
+`go version go1.17.8 darwin/amd64`
+`openjdk version "17.0.1" 2021-10-19`
+
 
 AWS account must be setup with `aws configure`
 
+--- 
 
-# To Run
- 
-Run the following commands to create the infrastructure.
+# To Build 
 
+Some of the Lambda functions will need to be built and uploaded for the following language
+- Java
+- Golang
 
-` + git/lambda-invoking-lambda/bin + aws lambda invoke --function-name subtraction --cli-binary-format raw-in-base64-out  --payload '{ "operand1" : 100, "operand2" : 20, "operator" : "sub"}' output.txt` 
-
+User will need to separately invoke the following build steps to create the Java `jar` and Golang `exe` before running the `terraform apply` 
 
 ## To Build Java Division Function
 
@@ -51,8 +60,9 @@ Hence because of this, we hardcoded the the path of the jar directly inside the 
 
 `env GOOS=linux GOARCH=amd64 go build -o subtraction subtraction.go`   
 
+--- 
 
-## To Deploy The Application
+# To Deploy The Application
 
  `terraform init`
 
@@ -66,4 +76,12 @@ To run the lambda chain just use the following command and then check lambda log
 
  `aws lambda invoke --function-name first_lambda out --log-type Tail`
  
+ --- 
+
+# To Run
  
+Run the following commands to test the infrastructure.
+
+
+` + git/lambda-invoking-lambda/bin + aws lambda invoke --function-name subtraction --cli-binary-format raw-in-base64-out  --payload '{ "operand1" : 100, "operand2" : 20, "operator" : "sub"}' output.txt` 
+
